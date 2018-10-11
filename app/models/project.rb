@@ -1,5 +1,5 @@
 class Project < ApplicationRecord
-  #remove
+  #remove2
   belongs_to :user
   has_many :releases, dependent: :destroy
   has_one :grade, dependent: :destroy
