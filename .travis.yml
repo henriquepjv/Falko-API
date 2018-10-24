@@ -15,6 +15,9 @@ services:
 install: true
 
 script:
+  - docker-compose -v
+  - docker-compose build
+  - docker-compose up
   - docker ps
   - docker ps -a
   - echo "it works"
