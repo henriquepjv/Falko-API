@@ -16,6 +16,7 @@ install: true
 
 script:
   - docker start falko-api-test
+  - echo "it works"
   - >
     while ! docker logs falko-api-test | grep "Listening on tcp://0.0.0.0:3000"; do
         echo "Waiting for start script to finish..."
