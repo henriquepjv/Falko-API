@@ -1,6 +1,6 @@
 sudo: required
 
-language: ruby
+language: generi
 rvm:
   - 2.4.1
 
@@ -15,6 +15,7 @@ services:
 install: true
 
 script:
+  - docker start falko-api-test
   - >
     while ! docker logs falko-api-test | grep "Listening on tcp://0.0.0.0:3000"; do
         echo "Waiting for start script to finish..."
