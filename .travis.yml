@@ -1,6 +1,6 @@
 sudo: required
 
-language: generi
+language: generic
 rvm:
   - 2.4.1
 
