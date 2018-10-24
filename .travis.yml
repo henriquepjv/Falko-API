@@ -15,16 +15,17 @@ services:
 install: true
 
 script:
-  - docker start falko-api
+  - docker ps
+  - docker ps -a
   - echo "it works"
   - >
-    while ! docker logs falko-api | grep "Listening on tcp://0.0.0.0:3000"; do
+    while ! docker logs falko-api-test | grep "Listening on tcp://0.0.0.0:3000"; do
         echo "Waiting for start script to finish..."
         sleep 5
     done;
-  - docker exec -it falko-api bundle exec rails db:test:prepare
-  - docker exec -it falko-api bundle exec rails test
-  - docker exec -it falko-api bundle exec rubocop
+  - docker exec -it falko-api-test bundle exec rails db:test:prepare
+  - docker exec -it falko-api-test bundle exec rails test
+  - docker exec -it falko-api-test bundle exec rubocop
 
 after_script:
   - docker exec -it falko-api-test bash -c "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT --coverage-input-type simplecov --id $CC_TEST_REPORTER_ID"
